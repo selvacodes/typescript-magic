@@ -1,3 +1,6 @@
+import { map } from 'ramda'
+
+
 interface Human {
     name: string
     age: number
@@ -24,5 +27,8 @@ function humanToAngel(human: Human): Angel {
 }
 
 const me = human("Selva", 12)
+
 const x = [me].map(humanToAngel)
+
+const y = map(humanToAngel)([me])
 
