@@ -1,10 +1,10 @@
 import { map } from 'ramda'
 
-
-interface Human {
-    name: string
+type Human = {
+    name: string,
     age: number
 }
+
 
 interface Angel {
     name: string
