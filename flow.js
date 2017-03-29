@@ -1,24 +1,28 @@
 // @flow
 
-const { map, add, converge } = require('ramda')
-const R = require('ramda')
+import { map, add, converge, pipe, divide, sum, length } from 'ramda'
 
-type gender = "M" | "F"
+type gender = "M" | "F";
 
 type Human = {
-    name: string,
-    age: number,
-    gender: gender
-}
+  name: string,
+  age: number,
+  gender: gender
+};
 
-const incrementAll = map(add(1))
+const incrementAll = map(add(1));
 
-const increment = R.add(1)
+const increment: (number) => number = add(1);
 
-const average: (list: number[]) => number = R.converge(R.divide, [R.sum, R.length])
+const average: number[] => number = converge(divide, [sum, length]);
 
-const out = incrementAll([1, 2, 3])
+const out = pipe(
+  average,
+  increment,
+  increment,
+  increment,
+  increment,
+  increment
+);
 
-console.log(average([1,2,3]))
-
-    // console.log(R.map(x => x + 1)([1, 2, 3]))
+console.log(increment(out([1, 2, 3])));

@@ -2,14 +2,12 @@
 
 var _ramda = require("ramda");
 
-var R = _interopRequireWildcard(_ramda);
+var incrementAll = (0, _ramda.map)((0, _ramda.add)(1));
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+var increment = (0, _ramda.add)(1);
 
-var incrementAll = map(add(1));
+var average = (0, _ramda.converge)(_ramda.divide, [_ramda.sum, _ramda.length]);
 
-// const { map, add } = require('ramda')
+var out = (0, _ramda.pipe)(average, increment, increment, increment, increment, increment);
 
-var out = incrementAll([1, 2, 3]);
-
-// console.log(R.map(x => x + 1)([1, 2, 3]))
+console.log(increment(out([1, 2, 3])));
